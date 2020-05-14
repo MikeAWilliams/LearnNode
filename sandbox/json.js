@@ -11,3 +11,5 @@ person.greet();
 person.firstname = 'Susan';
 person.lastname = 'Smith';
 person.greet();
+
+console.log(person['firstname']);

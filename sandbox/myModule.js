@@ -8,5 +8,11 @@ var Get4 = function(){
     return 4;
 };
 
-module.exports['logger'] = loggerFunction;
-module.exports['getValue'] = Get4;
+// this syntax works but is anoying to type
+//module.exports['logger'] = loggerFunction;
+//module.exports['getValue'] = Get4;
+
+module.exports = {
+    logger: loggerFunction,
+    getValue: Get4
+};

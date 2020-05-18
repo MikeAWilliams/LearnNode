@@ -41,17 +41,49 @@ function Cat(first, last, age) {
     }
 }
 
-var neco = new Person('neco', 'ninja', 3);
+var neco = new Cat('neco', 'ninja', 3);
 console.log(neco.GetFullName());
 console.log(neco.GetAge());
 
 util.inherits(JobCat, Cat);
 
 function JobCat(first, last, age, job){
-    Person.call(this, first, last, age)
+    Cat.call(this, first, last, age);
     this.job = job;
 }
 
 var fireCat = new JobCat('Mangy', 'Furrball', '2', 'Fire Fighter');
 console.log(fireCat.GetFullName());
 console.log(fireCat.job);
+
+// now use the class syntax
+
+class Dog{
+    constructor(first, last, age) {
+        this.firstName = first;
+        this.lastName = last;
+        this.age = age;
+        this.GetAge = function () {
+            return this.age;
+        }
+    }
+
+    GetFullName() { 
+        return `${this.firstName} ${this.lastName}`;
+    }
+}
+
+var bowser = new Dog('Bowser', 'Bruser', 14);
+console.log(bowser.GetFullName());
+console.log(bowser.GetAge());
+
+class JobDog extends Dog {
+    constructor(first, last, age, job) {
+        super(first, last, age);
+        this.job = job;
+    }
+}
+
+var fireDog = new JobDog('Scary', 'Burn', '2', 'Fire Fighter');
+console.log(fireDog.GetFullName());
+console.log(fireDog.job);

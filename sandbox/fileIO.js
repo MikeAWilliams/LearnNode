@@ -7,6 +7,11 @@ var greetFile = fs.readFile(__dirname + '/greetFile.txt', 'utf8',
         }
         else
         {
-            console.log(fileContents);
+            console.log('\n\n\n' + fileContents + '\n\n\n');
         }
 });
+// no matter how long my loop, the callback happens after. There is probably a keyword here I need
+var i;
+for(i = 0; i < 400; ++i){
+    console.log(i + 'doing other thingst that might happen before the file is read');
+}

@@ -15,7 +15,7 @@ for(i = 0; i < 40; ++i){
     console.log(i + 'doing other thingst that might happen before the file is read');
 }
 
-// now lets read it as a file stream
+// now lets read it as a file stream. Because this is async it can get interupted by the async above
 var fileStream = fs.createReadStream(__dirname + '/greetFile.txt', { encoding: 'utf8', highWaterMark: 6});
 fileStream.callCount = 0;
 fileStream.on('data', function(chunk){

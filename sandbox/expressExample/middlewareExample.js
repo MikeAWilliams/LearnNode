@@ -1,6 +1,8 @@
 var express = require('express');
 var app = express();
 
+app.set('view engine', 'ejs');
+
 app.use('/assets', express.static(__dirname +'/public'));
 
 app.use('/', function(req, res, next){
@@ -9,11 +11,19 @@ app.use('/', function(req, res, next){
 });
 
 app.get('/', function(request, result){
-    result.send('<html><link href=assets/style.css type=text/css rel=stylesheet/><head></head><body><h1>HELLO WORLD</h1></body></html>');
+    result.render('index');
 });
 
+app.get('/person', function(request, result){
+    result.render('person', {ID: request.params});
+});
+
+app.get('/person/:id', function(request, result){
+    result.render('person', {ID: request.params.id});
+});
 
 // consider express middleware passport for authentication
+// consider template view engine
 
 var port = process.env.PORT || 8080;
 app.listen(port);

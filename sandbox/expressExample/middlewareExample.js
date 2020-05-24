@@ -4,6 +4,8 @@ var app = express();
 
 var urlencodedParser = bodyParser.urlencoded({extended:false});
 
+var jsonParser = bodyParser.json();
+
 app.set('view engine', 'ejs');
 
 app.use('/assets', express.static(__dirname +'/public'));
@@ -21,6 +23,12 @@ app.post('/person', urlencodedParser, function(request, result){
     result.send('Thank you!');
     console.log(request.body.firstname);
     console.log(request.body.lastname);
+});
+
+app.post('/personjson', jsonParser, function(req, res){
+    res.send('Thank you for the json data!');
+    console.log(req.body.firstname);
+    console.log(req.body.lastname);
 });
 
 app.get('/person/:id', function(request, result){

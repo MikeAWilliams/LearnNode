@@ -1,4 +1,4 @@
-module.exports = function(app, todoSchema){
+module.exports = function(app, todoModel){
     app.get('/api/setupTodos', function(request, result){
         var starterTodos = [
             {
@@ -12,7 +12,7 @@ module.exports = function(app, todoSchema){
                 isdone: false
             },
         ];
-        todoSchema.create(starterTodos, function(error, mongooseResults){
+        todoModel.create(starterTodos, function(error, mongooseResults){
             result.send(mongooseResults);
         });
     });

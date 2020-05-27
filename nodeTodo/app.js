@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var mongoose = require('mongoose');
 var setupRout = require('./routs/setup');
+var apiRout = require('./routs/api');
 
 if(5 != process.argv.length){
     console.log("Usage:");
@@ -30,6 +31,7 @@ var Todos = mongoose.model('Todos', todoSchema);
 mongoose.connect(connectionString, {useNewUrlParser: true, useUnifiedTopology: true});
 
 setupRout(app, Todos);
+apiRout(app, Todos);
 
 var port = process.PORT || 8080;
 

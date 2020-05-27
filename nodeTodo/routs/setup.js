@@ -12,7 +12,6 @@ module.exports = function(app, todoSchema){
                 isdone: false
             },
         ];
-        console.log('about to create schema and send result');
         todoSchema.create(starterTodos, function(error, mongooseResults){
             result.send(mongooseResults);
         });

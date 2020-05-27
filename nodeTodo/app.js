@@ -24,11 +24,11 @@ var Schema = mongoose.Schema;
 var todoSchema = new Schema({
     username: String,
     todo: String,
-    isDone: Boolean
+    isdone: Boolean
 });
 var Todos = mongoose.model('Todos', todoSchema);
 
-mongoose.connect(connectionString, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(connectionString, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
 
 setupRout(app, Todos);
 apiRout(app, Todos);

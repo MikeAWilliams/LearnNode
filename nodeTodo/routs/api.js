@@ -23,7 +23,7 @@ module.exports = function(app, todoModel){
             todoModel.findByIdAndUpdate(request.body.id, 
                 {
                     todo: request.body.todo,
-                    isDone: request.body.isDone
+                    isdone: request.body.isdone
                 }, 
                 function(error, todoResult){
                     if(error) throw error;
@@ -44,7 +44,7 @@ module.exports = function(app, todoModel){
     });
 
     app.delete('/api/todo', function(request, response){
-        todoModel.findByIdAndRemove(request.bodyParser.id, function(error){
+        todoModel.findByIdAndRemove(request.body.id, function(error){
             if(error) throw error;
             response.send('Item delted');
         });

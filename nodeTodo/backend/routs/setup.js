@@ -1,5 +1,5 @@
-module.exports = function(app, todoModel){
-    app.get('/api/setupTodos', function(request, result){
+module.exports = function(expressApp, todoModel){
+    expressApp.get('/api/setupTodos', function(request, result){
         var starterTodos = [
             {
                 username: 'test',

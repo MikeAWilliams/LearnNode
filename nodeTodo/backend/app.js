@@ -1,5 +1,5 @@
 var express = require('express');
-var app = express();
+var expressApp = express();
 var mongoose = require('mongoose');
 var setupRout = require('./routs/setup');
 var apiRout = require('./routs/api');
@@ -30,13 +30,13 @@ var Todos = mongoose.model('Todos', todoSchema);
 
 mongoose.connect(connectionString, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
 
-setupRout(app, Todos);
-apiRout(app, Todos);
+setupRout(expressApp, Todos);
+apiRout(expressApp, Todos);
 
 var port = process.PORT || 8080;
 
-app.use('/assets', express.static(`${__dirname}/public`));
+expressApp.use('/assets', express.static(`${__dirname}/public`));
 
-app.set('view_engine', 'pug');
+expressApp.set('view_engine', 'pug');
 
-app.listen(port);
+expressApp.listen(port);
